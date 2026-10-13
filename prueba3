@@ -2,6 +2,7 @@ import random
 import discord
 from discord.ext import commands
 from bot_logic import gen_pass
+
 intents = discord.Intents.default()
 intents.message_content = True
 
@@ -13,25 +14,29 @@ async def on_ready():
     print("--------")
 
 @bot.command()
-
 async def hello(ctx):
-    await ctx.send(f"Hola, soy un bot{bot.user.name}!")
+    await ctx.send(f"Hola, soy un bot {bot.user.name}!")
+
+@bot.command()
+async def yourethebest(ctx):
+    await ctx.send("¡Muchísimas gracias! 😊")
+
+@bot.command()
+async def help(ctx):
+    await ctx.send("$yourethebest $bye $password $chiste $hello")
 
 @bot.command()
 async def bye(ctx):
     await ctx.send("\U0001f642")
-
 
 @bot.command()
 async def password(ctx):
     lenght = int(input("Enter the lenght of password: "))
     await ctx.send(gen_pass(lenght))
 
-
-
 @bot.command()
 async def chiste(ctx):
-    chistes =    [
+    chistes = [
         "¿Qué hace una abeja en el gimnasio? ¡Zumba!",
         (
             "— ¡Papá, papá! ¿Qué se siente tener un hijo tan guapo? — No lo"
